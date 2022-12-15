@@ -2,9 +2,6 @@ package com.folautech.xml;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -14,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.folautech.xml.model.Address;
 import com.folautech.xml.model.User;
