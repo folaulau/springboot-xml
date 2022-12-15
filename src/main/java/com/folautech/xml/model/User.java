@@ -23,12 +23,12 @@ public class User implements Serializable {
     private String            firstName;
     private String            lastName;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date              dob;
+    private LocalDate         dob;
     private String            email;
     private Address           address;
-    
-    //static field
+
+    // static field
     @Default
-    private String version = "1.0.0";
+    private String            version          = "1.0.0";
 
 }

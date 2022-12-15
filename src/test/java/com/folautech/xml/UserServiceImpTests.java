@@ -2,6 +2,7 @@ package com.folautech.xml;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.folautech.xml.model.Address;
 import com.folautech.xml.model.User;
 import com.folautech.xml.services.UserService;
@@ -28,7 +30,7 @@ public class UserServiceImpTests {
                 .firstName("Folau")
                 .lastName("Kaveinga")
                 .email("folaukaveinga@gmail.com")
-                .dob(new Date())
+                .dob(LocalDate.of(1986, 12, 03))
                 .address(Address.builder().street("123 st").city("Lehi").state("CA").zipcode("12345").build())
                 .build();
 
@@ -64,7 +66,7 @@ public class UserServiceImpTests {
                 .firstName("Folau")
                 .lastName("Kaveinga")
                 .email("folaukaveinga@gmail.com")
-                .dob(new Date())
+                .dob(LocalDate.of(1986, 12, 03))
                 .address(Address.builder().street("123 st").city("Lehi").state("CA").zipcode("12345").build())
                 .build();
 
@@ -74,6 +76,7 @@ public class UserServiceImpTests {
          * https://stackify.com/java-xml-jackson/
          */
         ObjectMapper objectMapper = new XmlMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         String xml = null;
@@ -95,6 +98,7 @@ public class UserServiceImpTests {
     public void itShouldCovertXmlToObjectWithObjectMapper() {
 
         ObjectMapper objectMapper = new XmlMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         String xml = """
